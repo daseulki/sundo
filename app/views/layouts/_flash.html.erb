@@ -1,9 +1,9 @@
 <%if flash[:notice]%>
   <div class = "alert alert-primary" role = "alert">
-    <%= flash[:notice]%>
+    로그인 성공!
   </div>
 <%elsif flash[:alert]%>
   <div class = "alert alert-danger" role = "alert">
-    <%= flash[:alert]%>
+    로그인 해야 글을 쓸 수 있습니다.
   </div>
 <%end%>

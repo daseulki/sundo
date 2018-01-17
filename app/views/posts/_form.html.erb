@@ -1,50 +1,50 @@
-<%= form_for @post, multipart: true do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this auction_post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class = "row" style="margin-top: 50px">
+  <div class = "col-md-4 offset-md-4">
+    <h1><i class="fas fa-plus"></i>   새 물건을 등록해주세요!</h1>
+    <%= form_for @post, multipart: true do |f| %>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this auction_post from being saved:</h2>
+          <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.select(:boardtype) do %>
-      <% [['대여', "1"], ['경매', "2"]].each do |c| -%>
-        <%= content_tag(:option, c.first, value: c.last) %>
+      <div class="form-group" >
+        <label>카테고리 : </label>
+        <%= f.select(:boardtype) do %>
+          <% [['대여', "1"], ['경매', "2"]].each do |c| -%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      </select>
+      <%= f.select(:category) do %>
+        <% [['식품', "식품"], ['패션의류/잡화', "패션의류/잡화"],['뷰티', "뷰티"],
+        ['출산/유아동', "출산/유아동"],['반려동물용품', "반려동물용품"],['생활용품', "생활용품"],['가전/디지털', "가전/디지털"],
+      ['스포츠/레저', "스포츠/레저"],['도서/음반/DVD', "도서/음반/DVD"],['문구/완구', "문구/완구"]].each do |c| -%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
       <% end %>
-    <% end %>
-  </select>
+    </select>
+    </div>
+        <div class="form-group">
+          <%= f.text_field :title, class: "form-control", placeholder: "물품명" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :title, class: "form-control", placeholder: "제목" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :content, class: "form-control", rows: "10", placeholder: "내용" %>
+        </div>
+        <div class="form-group">
+            <%= f.file_field :postimage%>
+        </div>
+        <div class="actions">
+          <%= f.submit "확인", class:"btn btn-lg btn-primary"%>
+          <%= link_to '취소', posts_path, class: "btn btn-secondary btn-lg"%>
+        </div>
+      <% end %>
+  </div>
 </div>
-<div class="field">
-  <p>카테고리</p>
-  <%= f.select(:category) do %>
-    <% [['식품', "식품"], ['패션의류/잡화', "패션의류/잡화"],['뷰티', "뷰티"],
-    ['출산/유아동', "출산/유아동"],['반려동물용품', "반려동물용품"],['생활용품', "생활용품"],['가전/디지털', "가전/디지털"],
-  ['스포츠/레저', "스포츠/레저"],['도서/음반/DVD', "도서/음반/DVD"],['문구/완구', "문구/완구"]].each do |c| -%>
-      <%= content_tag(:option, c.first, value: c.last) %>
-    <% end %>
-  <% end %>
-</select>
-</div>
-    <div class="field">
-      <p>제목</p>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <p>내용</p>
-      <%= f.text_area :content %>
-    </div>
-    <div class="field">
-      <p>사진 첨부</p>
-      <%= f.file_field :postimage %><br />
-
-    </div>
-
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
