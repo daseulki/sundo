@@ -13,9 +13,9 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Password</span>
       </div>
-    <%= f.text_field :password, required: false %>
+    <%= f.password_field :password, required: false %>
     </div>
-    <%= f.text_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
