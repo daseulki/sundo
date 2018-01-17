@@ -13,13 +13,13 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Password</span>
       </div>
-      <%= f.text_field :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.password_field :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Password</span>
       </div>
-    <%= f.text_field :password_confirmation, class: "form-control", required: true %>
+    <%= f.password_field :password_confirmation, class: "form-control", required: true %>
     </div>
   </div>
 
