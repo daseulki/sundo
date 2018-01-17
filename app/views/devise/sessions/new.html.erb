@@ -1,4 +1,6 @@
-<h1 style="text-align:center" ><i class="fas fa-child"></i>   아나바다 회원이라면 로그인해주세요!   <i class="fas fa-child"></i></h1>
+<div class = "row">
+  <div class = "col-md-4 offset-md-4">
+<h2 style="text-align:center" ><i class="fas fa-child"></i>   로그인을 환영합니다!   <i class="fas fa-child"></i></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -7,7 +9,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">이메일</span>
       </div>
-      <%= f.text_field :email, required: false, autofocus: true, class: "form-control" %>
+      <%= f.email_field :email, required: false, autofocus: true, class: "form-control" %>
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -24,3 +26,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+  </div>
+    </div>
