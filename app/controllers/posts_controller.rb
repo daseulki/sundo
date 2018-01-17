@@ -4,9 +4,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(boardtype: params[:id])
-
+    @posts = Post.where(boardtype: params[:type])
+    #localhost:3000/posts?type=auction 혹은 /posts?type=rent로 하면 해당 게시글만 보여짐
   end
+
   def index2
     @posts = Post.where("title LIKE ?", "%#{params["q"]}%")
   end
