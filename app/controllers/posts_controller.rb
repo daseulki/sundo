@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(boardtype: params[:type])
+    @posts = Post.where(boardtype: params[:id])
     #localhost:3000/posts?type=auction 혹은 /posts?type=rent로 하면 해당 게시글만 보여짐
   end
 
