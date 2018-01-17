@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get '/boards/:id' => 'posts#index'
 
   devise_for :users, controllers: {
-    session: 'users/sessions'
-  }
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions'
+   }
 
   #comment
   post '/posts/:id/create_comment' => 'posts#create_comment'
