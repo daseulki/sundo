@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like_post, :create_comment, :destroy_comment]
-  before_action :authenticate_user!, except: [:index,:show]
+  before_action :authenticate_user!, except: [:index, :index2, :show]
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.where(boardtype: params[:id])
+
+  end
+  def index2
+    @posts = Post.where("title LIKE ?", "%#{params["q"]}%")
   end
 
   # GET /posts/1

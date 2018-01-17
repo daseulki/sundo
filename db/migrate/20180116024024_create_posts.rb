@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :postimage
       t.text :content
-      t.integer :boardtype
+      t.string :boardtype
       t.integer :category
       t.integer :user_id
 

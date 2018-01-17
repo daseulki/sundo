@@ -1,7 +1,7 @@
 <%= form_for @post, multipart: true do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this auction_post from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
   <div class="field">
     <%= f.select(:boardtype) do %>
-      <% [['대여', "1"], ['경매', "2"]].each do |c| -%>
+      <% [['대여', "rent"], ['경매', "auction"]].each do |c| -%>
         <%= content_tag(:option, c.first, value: c.last) %>
       <% end %>
     <% end %>
