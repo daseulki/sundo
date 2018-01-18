@@ -1,0 +1,20 @@
+<div class = "row" style="margin-top: 50px">
+  <div class = "col-md-4 offset-md-4">
+    <div class="card bg-light mb-3" style="max-width: 50rem;">
+      <div class="card-header text-center">
+        <h1><i class="fas fa-child" color="blue"></i> 마이페이지 <i class="fas fa-child" color="blue"></i></h1>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <h3>이메일 : <%= current_user.email %><hr /> </h3>
+          <h3>별  명 : <%= current_user.nickname %><hr /></h3>
+          <h3>이  름 : <%= current_user.name %><hr /></h3>
+          <h3>주  소 : <%= current_user.address %><hr /></h3>
+          <h3>작성글 : <% current_user.posts.each do |post|%>
+          <%= post.title%>
+          <%end%></h3>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

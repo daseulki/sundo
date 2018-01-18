@@ -1,4 +1,3 @@
-<!-- <img src="<%=@post.postimage%>"> -->
 <!-- Product Description -->
 <div class="container g-py-50">
   <div class="row">
@@ -12,8 +11,18 @@
            data-arrow-right-classes="fa fa-angle-right g-right-40"
            data-nav-for="#carouselCus2">
 
-        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
-          <img class="img-fluid w-100 " src="<%=@post.postimage%>" alt="Image Description">
+       <style>
+         img.postimg {
+           max-width: 400px;
+           width: auto;
+           max-height:  400px;
+           height: auto;
+           align-items: center;
+           margin-top: 70px;
+         }
+      </style>
+        <div class="js-slide g-bg-cover">
+          <img class="img-fluid w-100 postimg " src="<%=@post.postimage%>" alt="Image Description">
         </div>
       </div>
 
@@ -27,7 +36,8 @@
           <% @post.boardtype.length > 5 ? posttype = "경매" : posttype = "대여" %>
           <p>[<%= posttype%>]  [<%= @post.category%>]</p>
           <h1 class="g-font-weight-300 mb-4"><%= @post.title %></h1>
-          <p><%= current_user.nickname%>님께서 제안한 상품입니다.</p>
+          <h5><%= current_user.nickname%>님께서 제안한 상품입니다.</h5>
+          <p><%= @post.created_at %>에 작성되었습니다. </p>
           <p><%= @post.content%></p>
 
           <!-- like버튼 추가 -->
@@ -41,7 +51,8 @@
           <br/>
 
           <%= link_to 'Edit', edit_post_path(@post) %> |
-          <a href="/boards/<%= @post.boardtype%>"> Back</a>
+          <a href="/boards/<%= @post.boardtype%>"> Back</a> |
+          <%= link_to 'Delete', post_path(@post), method: "DELETE" %>
 
         </div>
       </div>

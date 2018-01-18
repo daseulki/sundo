@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   #like
   post '/posts/:id/like' => 'posts#like_post'
 
-
+  #mypage
+  get '/homes/contact' => 'homes#contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

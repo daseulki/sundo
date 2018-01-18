@@ -101,7 +101,8 @@ end
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      backurl = "/boards/"+ @post.boardtype.to_s
+      format.html { redirect_to backurl, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -114,7 +115,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:boardtype, :title, :content, :postimage, :category)
+      params.require(:post).permit(:boardtype, :title, :content, :postimage, :category, :user_id)
     end
 
     def is_post_owner?
