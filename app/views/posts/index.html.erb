@@ -1,7 +1,9 @@
 
+<div class="container">
 
 <%= link_to '물건 올리기', new_post_path %>
 
+</div>
 <% @posts.in_groups_of(3, false).each do |group| %>
   <div class="row">
   <% group.each do |post| %>
