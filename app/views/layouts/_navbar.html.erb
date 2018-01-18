@@ -1,46 +1,46 @@
 <!-- Top Bar -->
-
-  <div class="container">
-    <div class="row align-items-center">
-      <!-- Logo -->
-      <div class="col-md-3 g-hidden-md-down">
-        <a href="/" class="navbar-brand">
-          <img src="/assets/img/logo.png" alt="Logo">
-        </a>
-      </div>
-
-      <!-- End Logo -->
-
-      <!-- Subscribe Form -->
-      <div class="col-6 col-md-6">
-        <form action="/searchs" class="input-group rounded" >
-          <input class="form-control w-80  g-color-secondary-dark-v1 g-placeholder-secondary-dark-v1 g-bg-white g-font-weight-400 g-font-size-13 rounded g-px-20 g-py-12" type="text" placeholder="오늘은 무엇을 찾아볼까요?" name = "q">
-          <button class="btn inverse g-color-primary--hover g-bg-secondary g-font-weight-600 g-font-size-13 text-uppercase rounded g-py-12 g-px-20" type="submit" >
-            <i class=" fa fa-search"></i>
-          </button>
-        </form>
-      </div>
-      <!-- End Subscribe Form -->
-
-
-      <!-- Account -->
-      <div class="col-2">
-        <% if user_signed_in? %>
-        <p align = "right">
-          <%= current_user.email %>
-          <%= link_to('로그아웃', destroy_user_session_path, method: :delete)%>
-        </p>
-
-        <% else %>
-        <p align = "right">
-          <%= link_to('로그인', new_user_session_path) %>
-          <%= link_to('회원가입', new_user_registration_path)%>
-        </p>
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <div class="fl_left">
+      <ul class="nospace">
+        <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <% unless user_signed_in? %>
+          <li><%= link_to(' 로그인 ', new_user_session_path) %></li>
+        
         <% end %>
-
-      </div>
-      <!-- End Account -->
+      </ul>
     </div>
+    <div class="fl_right">
+      <ul class="nospace">
+        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
+        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
   </div>
+</div>
+<div class="wrapper row1">
+  <!-- Logo -->
+  <header id="header" class="hoc clear">
+  <div class = "fl_left">
+    <a href="/">
+      <img src="/assets/img/logo.png" alt="Logo">
+    </a>
+  </div>
+  <!-- End Logo -->
+  <!-- Subscribe Form -->
+  <div class="col-8 fl_right g-hidden-md-down">
+    <form action="/searchs" class="input-group rounded" >
+      <input class="form-control w-80 g-brd-secondary-light-v2 g-brd-primary--focus g-color-secondary-dark-v1 g-placeholder-secondary-dark-v1 g-bg-white g-font-weight-400 g-font-size-13 rounded g-px-20 g-py-12" type="text" placeholder="오늘은 무엇을 찾아볼까요?" name = "q">
+      <button class="btn u-btn-white g-color-primary--hover g-bg-secondary g-font-weight-600 g-font-size-13 text-uppercase rounded g-py-12 g-px-20" type="submit" >
+        <i class=" fa fa-search"></i>
+      </button>
+    </form>
+  </div>
+  </header>
+</div>
 
 <!-- End Top Bar -->
