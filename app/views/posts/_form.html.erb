@@ -15,7 +15,7 @@
       <div class="form-group" >
         <label>카테고리 : </label>
         <%= f.select(:boardtype) do %>
-          <% [['대여', "1"], ['경매', "2"]].each do |c| -%>
+          <% [['대여', "rent"], ['경매', "auction"]].each do |c| -%>
             <%= content_tag(:option, c.first, value: c.last) %>
           <% end %>
         <% end %>

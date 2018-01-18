@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  get '/homes/guide' 
+  get '/homes/guide'
 
   resources :posts
-  get '/boards/:id' => 'posts#index'
+  get '/boards/:type' => 'posts#index'
   get '/searchs' => 'posts#index2'
 
   devise_for :users, controllers: {

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def index2
-    @posts = Post.where("title LIKE ?", "%#{params["q"]}%")
+    @posts = Post.where("content LIKE ?", "%#{params["q"]}%")
   end
 
   # GET /posts/1

@@ -11,36 +11,21 @@
 // about supported directives.
 //
 
-//= require jquery-3.2.1.min
+//= require jquery.min
 //= require jquery_ujs
+//= require jquery.backtotop
+//= jquery-migrate.min
+//= require jquery.mobilemenu
 //= require turbolinks
 //= require popper
 //= require bootstrap
 //= require_tree .
 
-//= require hs.megamenu
-
-//= require ui/widget
-//= require ui/version
-//= require ui/keycode
-//= require ui/position
-//= require ui/unique-id
-//= require ui/safe-active-element
-//= require widgets/menu
-//= require widgets/mouse
-//= require widgets/datepicker
-
-//= require chosen.jquery
-//= require slick
-//= require jquery.fancybox
-//= require hs.core
-
-//= require components/hs.header
-//= require hs.hamburgers
-//= require components/hs.dropdown
-//= require components/hs.slider
-//= require components/hs.select
-//= require components/hs.carousel
-//= require components/hs.popup
-//= require components/hs.datepicker
-//= require components/hs.go-to
+//= hs.megamenu
+//= jquery.mCustomScrollbar.concat.min
+//= hs.core
+//= components/hs.header
+//= hs.hamburgers
+//= components/hs.dropdown
+//= components/hs.scrollbar
+//= components/hs.go-to
