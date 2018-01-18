@@ -2,23 +2,28 @@
 <div class="wrapper row0">
   <div id="topbar" class="hoc clear">
     <!-- ################################################################################################ -->
+
     <div class="fl_left">
       <ul class="nospace">
         <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">마이 페이지</a></li>
         <% unless user_signed_in? %>
           <li><%= link_to(' 로그인 ', new_user_session_path) %></li>
-        
+        <% else %>
+
+          <li><%= link_to(' 로그아웃 ', destroy_user_session_path, method: :delete) %></li>
         <% end %>
       </ul>
     </div>
+    <% if user_signed_in? %>
     <div class="fl_right">
       <ul class="nospace">
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+        <li><%=current_user.name%>님 반갑습니다!</li>
       </ul>
     </div>
+    <%end%>
+
     <!-- ################################################################################################ -->
   </div>
 </div>
