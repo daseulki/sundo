@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180117092902) do
     t.string   "postimage"
     t.text     "content"
     t.string   "boardtype"
-    t.integer  "category"
+    t.string   "category"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

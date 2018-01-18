@@ -114,7 +114,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:boardtype, :title, :content, :postimage)
+      params.require(:post).permit(:boardtype, :title, :content, :postimage, :category)
     end
 
     def is_post_owner?
