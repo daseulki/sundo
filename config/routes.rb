@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/homes/guide'
 
   resources :posts
-  get '/boards/:id' => 'posts#index'
+  get '/boards/:type' => 'posts#index'
   get '/searchs' => 'posts#index2'
 
   devise_for :users, controllers: {
