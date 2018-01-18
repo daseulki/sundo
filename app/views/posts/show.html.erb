@@ -13,13 +13,64 @@
 <p class = "text-right"><a href="/posts/<%=@post.id%>/edit">수정 </a><a href="/posts/<%=@post.id%>" data-method="delete" data-confirm="삭제할래?"> 삭제</a></p>
 
 <hr />
+<!-- <img src="<%=@post.postimage%>"> -->
+<!-- Product Description -->
+<div class="container g-py-50">
+  <div class="row">
+    <div class="col-lg-7">
+      <!-- Carousel -->
+      <div id="carouselCus1" class="js-carousel g-pt-10 g-mb-10"
+           data-infinite="true"
+           data-fade="true"
+           data-arrows-classes="u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle"
+           data-arrow-left-classes="fa fa-angle-left g-left-40"
+           data-arrow-right-classes="fa fa-angle-right g-right-40"
+           data-nav-for="#carouselCus2">
+        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
+          <img class="img-fluid w-100" src="assets/img-temp/650x750/img1.jpg" alt="Image Description">
+        </div>
+        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
+          <img class="img-fluid w-100" src="assets/img-temp/650x750/img2.jpg" alt="Image Description">
+        </div>
+        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
+          <img class="img-fluid w-100" src="assets/img-temp/650x750/img3.jpg" alt="Image Description">
+        </div>
+      </div>
+
+      <div id="carouselCus2" class="js-carousel text-center u-carousel-v3 g-mx-minus-5"
+           data-center-mode="true"
+           data-slides-show="3"
+           data-is-thumbs="true"
+           data-focus-on-select="true"
+           data-nav-for="#carouselCus1">
+        <div class="js-slide g-cursor-pointer g-px-5">
+          <img class="img-fluid" src="assets/img-temp/250x170/img1.jpg" alt="Image Description">
+        </div>
+
+        <div class="js-slide g-cursor-pointer g-px-5">
+          <img class="img-fluid" src="assets/img-temp/250x170/img2.jpg" alt="Image Description">
+        </div>
+
+        <div class="js-slide g-cursor-pointer g-px-5">
+          <img class="img-fluid" src="assets/img-temp/250x170/img3.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Carousel -->
+    </div>
+
+    <div class="col-lg-5">
+      <div class="g-px-40--lg g-pt-70">
+        <!-- Product Info -->
+        <div class="g-mb-30">
+          <% @post.boardtype.length > 5 ? posttype = "경매" : posttype = "대여" %>
+          <p>[<%= posttype%>]  [<%= @post.category%>]</p>
+          <h1 class="g-font-weight-300 mb-4"><%= @post.title %></h1>
+          <p><%= current_user.nickname%>님께서 제안한 상품입니다.</p>
+          <p><%= @post.content%></p>
+        </div>
+        <!-- End Product Info -->
 
 <!-- like버튼 추가 -->
-
-<!-- <button type="button" class="btn <%= @like.count > 0 ? 'btn-danger' : 'btn-info' %>" id="like">
-  <i class="fas fa-thumbs-up fa-lg"></i> 좋아요(<span id="like-count"><%= @post.likes.count %></span>)
-</button> -->
-
 <% if @like.count > 0%>
 <button type="button" class="btn btn-danger" id="like"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
 
