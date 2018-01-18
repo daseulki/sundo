@@ -5,9 +5,9 @@
     <div class="col-md-6 col-lg-5 order-lg-2 g-mb-80">
       <div class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-px-30 g-py-50 mb-4">
         <header class="text-center mb-4">
-          <h1 class="h4 g-color-black g-font-weight-400">
+          <h3 class=" g-color-black g-font-weight-400">
             <i class="fas fa-child"></i> 로그인 <i class="fas fa-child"></i>
-          </h1>
+          </h3>
         </header>
 
         <!-- Form -->
@@ -23,7 +23,7 @@
           </div>
 
           <div class="mb-4">
-            <div class="input-group g-rounded-left-3 mb-4">
+            <div class="input-group g-rounded-left-3 mb-10">
               <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
                 비밀번호
               </span>
@@ -32,23 +32,13 @@
             </div>
           </div>
 
-          <div class="row justify-content-between mb-5">
-
-              <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-13 g-pl-25 mb-0">
-                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                <span class="d-block u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
-                </span>
-                <p class = "text-center">아이디를 기억하시겠습니까? <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %></p>
-              </label>
-
-          </div>
 
           <div class="form-actions">
-            <%= f.submit "로그인하기", class: "btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mb-3" %>
+            <%= f.submit "로그인하기", class: "btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mt-2 mb-3" %>
 
           </div>
 
-          <div class="d-flex justify-content-center text-center g-mb-30">
+          <div class="d-flex justify-content-center text-center g-mb-20">
             <div class="d-inline-block align-self-center g-width-50 g-height-1 g-bg-gray-light-v1"></div>
             <span class="align-self-center g-color-gray-dark-v5 mx-2">OR</span>
             <div class="d-inline-block align-self-center g-width-50 g-height-1 g-bg-gray-light-v1"></div>
@@ -61,16 +51,16 @@
 
         <!-- End Form -->
       <% end %>
-      </div>
-
       <div class="text-center">
-
         <p class="g-color-gray-dark-v5 mb-0">아이디가 없으신가요?
         <%= link_to "회원가입", new_registration_path(resource_name) %></p>
         <p class="g-color-gray-dark-v5 mb-0">비밀번호를 잊어버리셨나요?
           <%= link_to "비밀번호 찾기", new_password_path(resource_name) %></p>
       </div>
     </div>
+      </div>
+
+
 
     <div class="col-md-6 order-lg-1 g-mb-80">
       <div class="mb-5">
@@ -127,36 +117,3 @@
   </div>
 </section>
 <!-- End Login -->
-
-
-
-<div class = "row" style="margin-top: 50px">
-  <div class = "col-md-4 offset-md-4">
-<h2 style="text-align:center" ><i class="fas fa-child"></i>   로그인을 환영합니다!   <i class="fas fa-child"></i></h2>
-<br/><br/>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="form-inputs">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">이메일</span>
-      </div>
-      <%= f.email_field :email, required: false, autofocus: true, class: "form-control" %>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">비밀번호</span>
-      </div>
-    <%= f.password_field :password, required: false, class: "form-control" %>
-    </div>
-      <p>아이디를 기억하시겠습니까?  <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %></p>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit "로그인", class: "btn btn btn-dark" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-  </div>
-    </div>

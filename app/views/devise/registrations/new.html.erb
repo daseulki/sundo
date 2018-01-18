@@ -1,53 +1,133 @@
-<div class = "row" style="margin-top: 50px">
-  <div class = "col-md-4 offset-md-4">
-<h2 style="text-align:center"><i class="far fa-handshake"></i>  회원가입을 환영합니다! </h2><br/>
+<section class="container g-pt-100 g-pb-20">
+  <div class="row justify-content-between">
+    <div class="col-md-6 col-lg-5 order-lg-2 g-mb-80">
+      <div class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-px-30 g-py-50 mb-4">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <header class="text-center mb-4">
+          <h3 class=" g-color-black g-font-weight-400">
+            <i class="fas fa-child"></i> 회원가입 <i class="fas fa-child"></i>
+          </h3>
+        </header>
 
-  <div class="form-inputs">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">이메일</span>
+        <!-- Form -->
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+               이메일
+            </span>
+            <%= f.email_field :email, required: true, autofocus: true, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"  %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+               비밀번호
+            </span>
+          <%= f.password_field :password, required: true, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15", hint: ("#{@minimum_password_length}
+            characters minimum" if @minimum_password_length) %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+              비밀번호 확인
+            </span>
+              <%= f.password_field :password_confirmation, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15", required: true %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+               이름
+            </span>
+          <%= f.text_field :name, required: true, autofocus: true, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"  %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+               닉네임
+            </span>
+            <%= f.text_field :nickname, required: true, autofocus: true, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"  %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="input-group g-rounded-left-3">
+            <span class="input-group-addon g-width-90 g-brd-gray-light-v3 g-color-gray-dark-v5">
+               주소
+            </span>
+          <%= f.text_field :name, required: true, autofocus: true, class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"  %>
+          </div>
+        </div>
+
+      <!-- End Form -->
+      <div class="form-actions">
+        <%= f.submit "회원가입 완료" , class: "btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"%>
       </div>
-      <%= f.email_field :email, required: true, autofocus: true, class: "form-control"  %>
+      <% end %>
+      </div>
+      <div class="text-center">
+        <p class="g-color-gray-dark-v5 mb-0">이미 계정이 있으신가요?
+          <%= link_to(' 로그인 ', new_user_session_path)  %></p>
+      </div>
     </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">비밀번호</span>
-      </div>
-      <%= f.password_field :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">비밀번호 확인</span>
+    <div class="col-lg-7 order-lg-1 g-mb-80">
+      <div class="g-pr-20--lg">
+        <div class="mb-5">
+          <h2 class="h1 g-font-weight-400 mb-3">Welcome to Unify</h2>
+          <p class="g-color-gray-dark-v4">The time has come to bring those ideas and plans to life. This is where we really begin to visualize your napkin sketches and make them into beautiful pixels.</p>
+        </div>
+
+        <div class="row text-center mb-5">
+          <div class="col-sm-4 g-mb-10">
+            <!-- Counters -->
+            <div class="g-bg-gray-light-v5 g-pa-20">
+              <div class="js-counter g-color-gray-dark-v5 g-font-weight-300 g-font-size-25 g-line-height-1">52147</div>
+              <div class="d-inline-block g-width-10 g-height-2 g-bg-gray-dark-v5 mb-1"></div>
+              <h4 class="g-color-gray-dark-v4 g-font-size-12 text-uppercase">Code Lines</h4>
+            </div>
+            <!-- End Counters -->
+          </div>
+
+          <div class="col-sm-4 g-mb-10">
+            <!-- Counters -->
+            <div class="g-bg-gray-light-v5 g-pa-20">
+              <div class="js-counter g-color-gray-dark-v5 g-font-weight-300 g-font-size-25 g-line-height-1">24583</div>
+              <div class="d-inline-block g-width-10 g-height-2 g-bg-gray-dark-v5 mb-1"></div>
+              <h4 class="g-color-gray-dark-v4 g-font-size-12 text-uppercase">Projects</h4>
+            </div>
+            <!-- End Counters -->
+          </div>
+
+          <div class="col-sm-4 g-mb-10">
+            <!-- Counters -->
+            <div class="g-bg-gray-light-v5 g-pa-20">
+              <div class="js-counter g-color-gray-dark-v5 g-font-weight-300 g-font-size-25 g-line-height-1">7348</div>
+              <div class="d-inline-block g-width-10 g-height-2 g-bg-gray-dark-v5 mb-1"></div>
+              <h4 class="g-color-gray-dark-v4 g-font-size-12 text-uppercase">Working Hours</h4>
+            </div>
+            <!-- End Counters -->
+          </div>
+        </div>
+
+        <div class="text-center">
+          <h2 class="h4 g-font-weight-400 mb-4">Join more than
+            <span class="g-color-primary">33,000</span> members worldwide</h2>
+          <img class="img-fluid g-opacity-0_6" src="assets/img/maps/map.png" alt="Image Description">
+        </div>
       </div>
-    <%= f.password_field :password_confirmation, class: "form-control", required: true %>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">별명</span>
-      </div>
-      <%= f.text_field :nickname, required: true, autofocus: true, class: "form-control"  %>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">이름</span>
-      </div>
-      <%= f.text_field :name, required: true, autofocus: true, class: "form-control"  %>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">주소</span>
-      </div>
-      <%= f.text_field :address, required: true, autofocus: true, class: "form-control"  %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "회원가입 완료" , class: "btn btn-dark"%>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
-</div>
-</div>
+</section>
+<!-- End Signup -->
