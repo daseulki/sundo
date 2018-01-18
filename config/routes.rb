@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  get '/homes/guide' 
+  get '/homes/guide'
 
   resources :posts
   get '/boards/:id' => 'posts#index'
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
    }
 
   #comment
