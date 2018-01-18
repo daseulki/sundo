@@ -1,3 +1,7 @@
+
+
+<%= link_to '물건 올리기', new_post_path %>
+
 <% @posts.in_groups_of(3, false).each do |group| %>
   <div class="row">
   <% group.each do |post| %>
@@ -6,7 +10,7 @@
         <figure class="figure d-flex justify-content-center flex-column align-items-center">
           <img src="<%=post.postimage.thumb%>" class="figure-img img-fluid">
           <figcaption class="figure-caption text-center">
-            <a href="/posts/<%=post.id%>" ><%= post.title %></a>
+            <a href="/posts/<%=post.id%>" ><%= post.title %></a>(<%=post.comments.count%>)
           </figcaption>
         </figure>
       <!-- </div> -->
@@ -18,5 +22,3 @@
 <%end%>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
