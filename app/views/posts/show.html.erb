@@ -1,18 +1,3 @@
-<div class="d-flex justify-content-center mt-3">
-
-  <figure class="figure mt-5">
-    <img src="<%=@post.postimage%>">
-    <h2><figcaption class="figure-caption text-center">
-      <%= @post.title %><br /></h2>
-      <p><%= @post.content%></p>
-    </figcaption>
-  </figure>
-
-</div>
-
-<p class = "text-right"><a href="/posts/<%=@post.id%>/edit">수정 </a><a href="/posts/<%=@post.id%>" data-method="delete" data-confirm="삭제할래?"> 삭제</a></p>
-
-<hr />
 <!-- <img src="<%=@post.postimage%>"> -->
 <!-- Product Description -->
 <div class="container g-py-50">
@@ -26,35 +11,12 @@
            data-arrow-left-classes="fa fa-angle-left g-left-40"
            data-arrow-right-classes="fa fa-angle-right g-right-40"
            data-nav-for="#carouselCus2">
+
         <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
-          <img class="img-fluid w-100" src="assets/img-temp/650x750/img1.jpg" alt="Image Description">
-        </div>
-        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
-          <img class="img-fluid w-100" src="assets/img-temp/650x750/img2.jpg" alt="Image Description">
-        </div>
-        <div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
-          <img class="img-fluid w-100" src="assets/img-temp/650x750/img3.jpg" alt="Image Description">
+          <img class="img-fluid w-100 " src="<%=@post.postimage%>" alt="Image Description">
         </div>
       </div>
 
-      <div id="carouselCus2" class="js-carousel text-center u-carousel-v3 g-mx-minus-5"
-           data-center-mode="true"
-           data-slides-show="3"
-           data-is-thumbs="true"
-           data-focus-on-select="true"
-           data-nav-for="#carouselCus1">
-        <div class="js-slide g-cursor-pointer g-px-5">
-          <img class="img-fluid" src="assets/img-temp/250x170/img1.jpg" alt="Image Description">
-        </div>
-
-        <div class="js-slide g-cursor-pointer g-px-5">
-          <img class="img-fluid" src="assets/img-temp/250x170/img2.jpg" alt="Image Description">
-        </div>
-
-        <div class="js-slide g-cursor-pointer g-px-5">
-          <img class="img-fluid" src="assets/img-temp/250x170/img3.jpg" alt="Image Description">
-        </div>
-      </div>
       <!-- End Carousel -->
     </div>
 
@@ -67,19 +29,26 @@
           <h1 class="g-font-weight-300 mb-4"><%= @post.title %></h1>
           <p><%= current_user.nickname%>님께서 제안한 상품입니다.</p>
           <p><%= @post.content%></p>
+
+          <!-- like버튼 추가 -->
+          <% if @like.count > 0%>
+          <button type="button" class="btn btn-danger" id="like"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+
+          <% else %>
+          <button type="button" class="btn btn-light" id="like"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+          <%= link_to "좋아요", "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "" %>
+          <% end %>
+          <br/>
+
+          <%= link_to 'Edit', edit_post_path(@post) %> |
+          <a href="/boards/<%= @post.boardtype%>"> Back</a>
+
         </div>
+      </div>
+    </div>
         <!-- End Product Info -->
 
-<!-- like버튼 추가 -->
-<% if @like.count > 0%>
-<button type="button" class="btn btn-danger" id="like"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
-
-<% else %>
-<button type="button" class="btn btn-light" id="like"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
-<%= link_to "좋아요", "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "" %>
-<% end %>
-
-
+<br/>
 <table class="table">
   <thead>
     <tr>
@@ -90,26 +59,69 @@
     </tr>
   </thead>
   <tbody class="comment-list">
+
     <% @post.comments.each do |comment| %>
     <tr id="comment-<%= comment.id %>">
       <td><%=comment.user.email%></td>
       <td><%= comment.content %></td>
-      <!-- <td><button type="button" class="btn btn-warning edit-comment" data-id="<%= comment.id %>"><i class="fas fa-cog"></i> 수정</button></td> -->
+      <td></td>
       <td><button type="button" class="btn btn-danger destroy-comment" data-id="<%= comment.id %>"><i class="fas fa-trash-alt"></i></button></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= form_tag("/posts/#{@post.id}/create_comment", method: "post", class: "form-inline mt-3 mb-3", multipart: true) do %>
-  <div class="form-group col-10">
-    <%= text_area_tag("content","" , style: "width: 100% !important;" ) %>
+<!-- Comments -->
+<div class="g-mb-60">
+  <div class="u-heading-v3-1 g-mb-30">
+    <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary"><%= @post.comments.count %> Comments</h2>
   </div>
-  <div class="form-group col-2">
-    <%= button_tag( "등록" , class: "btn btn-primary create-comment")  %>
+
+  <!-- Comment 1 -->
+  <% @post.comments.each do |comment| %>
+  <div class="media g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-20">
+    <i class="fas fa-comments d-flex u-shadow-v25 g-width-40 g-height-40 g-mr-15" style="color: LightGrey"></i>
+
+    <div class="media-body">
+      <div class="g-mb-15">
+        <h5 class="d-flex justify-content-between align-items-center g-font-size-16 g-color-gray-dark-v1 mb-0">
+          <span class="d-block g-mr-10"><%= comment.user.nickname %></span>
+          <a class="u-tags-v1 g-font-size-12 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Author</a>
+        </h5>
+        <span class="g-color-gray-dark-v4 g-font-size-12">2 days ago</span>
+      </div>
+      <div class="g-mb-15">
+        <p class="g-color-gray-dark-v2"><%= comment.content %></p>
+      </div>
+    </div>
+
   </div>
-<% end %>
+          <% end %>
+  <!-- End Comment 1 -->
 
+  <div class="text-center g-mt-30">
+    <a class="btn u-btn-outline-primary g-font-size-12 text-uppercase g-px-25 g-py-13" href="#!">
+      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-2"></i> Load More Comments
+    </a>
+  </div>
+</div>
+<!-- Comments -->
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<!-- Add Comment -->
+<div class="container">
+  <div>
+    <div class="u-heading-v3-1 g-mb-30">
+      <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary"><i class="fas fa-pencil-alt"></i>&nbsp;댓글을 남겨주세요!</h2>
+    </div>
+
+    <%= form_tag("/posts/#{@post.id}/create_comment", method: "post", class: "form-inline mt-3 mb-3", multipart: true) do %>
+
+        <%= text_area_tag("content","" , style: "width: 100% !important;",class: "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-pa-15", rows: "12", placeholder: "Your Message" ) %>
+      <%= button_tag(  class: "btn u-btn-primary g-font-size-12 text-uppercase g-px-25 g-py-13", style: "margin-top: 25px") do  %>
+        덧글 등록
+      <%end%>
+    <% end %>
+  </div>
+
+</div>
+<!-- End Add Comment -->
