@@ -23,7 +23,7 @@
 //= require_tree .
 
 //= require hs.megamenu
-//= require jquery.mCustomScrollbar.concat.min
+
 //= require hs.core
 //= require components/hs.header
 //= require hs.hamburgers
@@ -31,5 +31,5 @@
 //= require components/hs.scrollbar
 //= require components/hs.go-to
 //= require isotope
-//= require imagesloaded
+
 //= require wow.min

@@ -48,31 +48,8 @@
     </div>
         <!-- End Product Info -->
 
-<br/>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th width="80%"> 덧 글 </th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody class="comment-list">
-
-    <% @post.comments.each do |comment| %>
-    <tr id="comment-<%= comment.id %>">
-      <td><%=comment.user.email%></td>
-      <td><%= comment.content %></td>
-      <td></td>
-      <td><button type="button" class="btn btn-danger destroy-comment" data-id="<%= comment.id %>"><i class="fas fa-trash-alt"></i></button></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <!-- Comments -->
-<div class="g-mb-60">
+<div class=" container g-mb-60">
   <div class="u-heading-v3-1 g-mb-30">
     <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary"><%= @post.comments.count %> Comments</h2>
   </div>
@@ -86,9 +63,7 @@
       <div class="g-mb-15">
         <h5 class="d-flex justify-content-between align-items-center g-font-size-16 g-color-gray-dark-v1 mb-0">
           <span class="d-block g-mr-10"><%= comment.user.nickname %></span>
-          <a class="u-tags-v1 g-font-size-12 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Author</a>
         </h5>
-        <span class="g-color-gray-dark-v4 g-font-size-12">2 days ago</span>
       </div>
       <div class="g-mb-15">
         <p class="g-color-gray-dark-v2"><%= comment.content %></p>
@@ -98,12 +73,6 @@
   </div>
           <% end %>
   <!-- End Comment 1 -->
-
-  <div class="text-center g-mt-30">
-    <a class="btn u-btn-outline-primary g-font-size-12 text-uppercase g-px-25 g-py-13" href="#!">
-      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-2"></i> Load More Comments
-    </a>
-  </div>
 </div>
 <!-- Comments -->
 
