@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -21,11 +22,14 @@
 //= require bootstrap
 //= require_tree .
 
-//= hs.megamenu
-//= jquery.mCustomScrollbar.concat.min
-//= hs.core
-//= components/hs.header
-//= hs.hamburgers
-//= components/hs.dropdown
-//= components/hs.scrollbar
-//= components/hs.go-to
+//= require hs.megamenu
+//= require jquery.mCustomScrollbar.concat.min
+//= require hs.core
+//= require components/hs.header
+//= require hs.hamburgers
+//= require components/hs.dropdown
+//= require components/hs.scrollbar
+//= require components/hs.go-to
+//= require isotope
+//= require imagesloaded
+//= require wow.min
